@@ -1,4 +1,4 @@
-import 'package:cis/customer_model.dart';
+import 'package:cis/models/customer_model.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
@@ -43,16 +43,29 @@ class CustomerDatabaseHelper {
     return db;
   }
 }
-  //Method to get the Customer and return a customerModel
+//Method to get the Customer and return a customerModel
 
-  Future<CustomerModel> query(String customerController) async {
-    //get a reference to the DataBase
-    Database db = await CustomerDatabaseHelper.instance.database;
+Future<CustomerModel> query(String customerController) async {
+  //get a reference to the DataBase
+  Database db = await CustomerDatabaseHelper.instance.database;
 
-    var customer = customerController.toString();
-    // get customer
-    var results = await db.rawQuery(
-        'SELECT CUSTKEY,ZONE,NAME,CUSTOMER_CATEGORY,STATUS,METER_REF  FROM westMainland WHERE CUSTKEY = $customer');
-    CustomerModel customerResult = CustomerModel.fromJson(results.first);
-    return customerResult;
-  }
+  var customer = customerController.toString();
+  // get customer
+  var results = await db.rawQuery(
+      'SELECT CUSTKEY,ZONE,NAME,CUSTOMER_CATEGORY,STATUS,METER_REF  FROM westMainland WHERE CUSTKEY = $customer');
+  CustomerModel customerResult = CustomerModel.fromJson(results.first);
+  return customerResult;
+}
+
+//querry meter
+Future<CustomerModel> queryMeter(String customerController) async {
+  //get a reference to the DataBase
+  Database db = await CustomerDatabaseHelper.instance.database;
+
+  var customer = customerController.toString();
+  // get customer
+  var results = await db.rawQuery(
+      'SELECT CUSTKEY,ZONE,NAME,CUSTOMER_CATEGORY,STATUS,METER_REF  FROM westMainland WHERE METER_REF = $customer');
+  CustomerModel customerResult = CustomerModel.fromJson(results.first);
+  return customerResult;
+}
