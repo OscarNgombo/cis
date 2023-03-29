@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "132387830559",
+    "firebase_url": "https://mowassco-a7e60-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mowassco-a7e60",
+    "storage_bucket": "mowassco-a7e60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132387830559:android:84fb55f12a8cec97320e2a",
+        "android_client_info": {
+          "package_name": "com.example.cis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132387830559-23ged24frdfll3nmt3k5as45qfn3r4af.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDig34_TSk_ndGqTA7e5qhxL97IYoSsbg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132387830559-23ged24frdfll3nmt3k5as45qfn3r4af.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,7 +3,7 @@ class CustomerModel {
   String? zONE;
  String? cELLTELNO;
   String? nAME;
-  // String? uAADRESS;
+  // String? uADDRESS;
   String? sTATUS;
   String? mETERREF;
   // String? pHYSICALADDRESS;
@@ -14,7 +14,7 @@ class CustomerModel {
       this.zONE,
       this.cELLTELNO,
       this.nAME,
-      // this.uAADRESS,
+      // this.uADDRESS,
       this.sTATUS,
       this.mETERREF,
       // this.pHYSICALADDRESS,
@@ -25,7 +25,7 @@ class CustomerModel {
     zONE = json['ZONE'];
     cELLTELNO = json['CELL_TEL_NO'];
     nAME = json['NAME'];
-    // uAADRESS = json['UA_ADRESS'];
+    // uADDRESS = json['UA_ADDRESS'];
     sTATUS = json['STATUS'];
     mETERREF = json['METER_REF'];
     // pHYSICALADDRESS = json['PHYSICAL_ADDRESS'];
@@ -33,16 +33,16 @@ class CustomerModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['CUSTKEY'] = this.cUSTKEY;
-    data['ZONE'] = this.zONE;
-    data['CELL_TEL_NO'] = this.cELLTELNO;
-    data['NAME'] = this.nAME;
-    // data['UA_ADRESS'] = this.uAADRESS;
-    data['STATUS'] = this.sTATUS;
-    data['METER_REF'] = this.mETERREF;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['CUSTKEY'] = cUSTKEY;
+    data['ZONE'] = zONE;
+    data['CELL_TEL_NO'] = cELLTELNO;
+    data['NAME'] = nAME;
+    // data['UA_ADDRESS'] = this.uADDRESS;
+    data['STATUS'] = sTATUS;
+    data['METER_REF'] = mETERREF;
     // data['PHYSICAL_ADDRESS'] = this.pHYSICALADDRESS;
-    data['CUSTOMER_CATEGORY'] = this.cUSTOMERCATEGORY;
+    data['CUSTOMER_CATEGORY'] = cUSTOMERCATEGORY;
     return data;
   }
 }

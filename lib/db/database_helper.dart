@@ -5,7 +5,7 @@ import 'package:path/path.dart' as path;
 import 'dart:io' as io;
 
 class CustomerDatabaseHelper {
-  static const table = 'westMainland';
+  static const table = 'island';
   late Database _db;
 
   CustomerDatabaseHelper._privateConstructor();
@@ -21,23 +21,23 @@ class CustomerDatabaseHelper {
     //get app directory path
     var databasePath = await getDatabasesPath();
 
-    String dbPath = path.join(databasePath, "westMainland.db");
+    String dbPath = path.join(databasePath, "island.db");
 
     // Check if the database exists
     bool dbExists = await io.File(dbPath).exists();
 
     if (!dbExists) {
       // Copy from asset
-      ByteData data =
-          await rootBundle.load(path.join("assets", "westMainland.db"));
+      ByteData data = await rootBundle.load(path.join("assets", "island.db"));
       List<int> bytes =
           data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
       // Write and flush the bytes written
       await io.File(dbPath).writeAsBytes(bytes, flush: true);
-    } else {
-      print("Opening existing database");
     }
+    // else {
+    //   print("Opening existing database");
+    // }
 
     var db = await openDatabase(dbPath, readOnly: true);
     return db;
@@ -52,12 +52,13 @@ Future<CustomerModel> query(String customerController) async {
   var customer = customerController.toString();
   // get customer
   var results = await db.rawQuery(
-      'SELECT CUSTKEY,ZONE,NAME,CUSTOMER_CATEGORY,STATUS,METER_REF  FROM westMainland WHERE CUSTKEY = $customer');
+      'SELECT CUSTKEY,ZONE,NAME,CUSTOMER_CATEGORY,STATUS,METER_REF  FROM island WHERE CUSTKEY = ?',
+      [customer]);
   CustomerModel customerResult = CustomerModel.fromJson(results.first);
   return customerResult;
 }
 
-//querry meter
+//query meter
 Future<CustomerModel> queryMeter(String customerController) async {
   //get a reference to the DataBase
   Database db = await CustomerDatabaseHelper.instance.database;
@@ -65,7 +66,8 @@ Future<CustomerModel> queryMeter(String customerController) async {
   var customer = customerController.toString();
   // get customer
   var results = await db.rawQuery(
-      'SELECT CUSTKEY,ZONE,NAME,CUSTOMER_CATEGORY,STATUS,METER_REF  FROM westMainland WHERE METER_REF = $customer');
+      'SELECT CUSTKEY,ZONE,NAME,CUSTOMER_CATEGORY,STATUS,METER_REF  FROM island WHERE METER_REF = ?',
+      [customer]);
   CustomerModel customerResult = CustomerModel.fromJson(results.first);
   return customerResult;
 }
