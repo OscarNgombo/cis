@@ -18,7 +18,7 @@ This project is a starting point for a mobile app that supports the features bel
 1. Clone the repository:
 
     ```s
-   git clone https://github.com/your-repo/cis.git
+   git clone https://github.com/OscarNgombo/cis.git
    ```
 
 2. Navigate to the project directory:
