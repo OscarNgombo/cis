@@ -128,7 +128,6 @@ class _MeterState extends State<Meter> {
             },
             future: queryMeter(controller.meter.value.text).catchError(
               (error) {
-                print("Something went wrong: ${error.message}");
               },
             ),
           )),
